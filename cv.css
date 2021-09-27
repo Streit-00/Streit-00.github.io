@@ -12,7 +12,7 @@ body {
     font-family: Georgia;
 }
 
-#container {
+#cv-container {
     display: grid;
     background-color: hsl(40, 100%, 85%);
     margin: 20px;
@@ -21,7 +21,7 @@ body {
     grid-template-rows: auto auto auto auto;
 }
 
-#a {
+#cv-header {
     display: grid;
     margin: 20px;
     padding: 20px;
@@ -29,47 +29,38 @@ body {
     grid-template-rows: auto auto;
 }
 
-#a1 {
+#cv-header-text {
     text-align: center;
     grid-row: 1;
     margin: 20px;
 }
 
-#a2 {
+#cv-header-line {
     grid-row: 2;
     margin: 20px;
     background-color:hsl(40, 100%, 35%);
 }
 
-#b {
-    display: grid;
+#cv-biography {
     grid-row: 2;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-    justify-content: start;
+    display: inline-block;
 }
 
-#b1 {
-    align-content: center;
-    grid-row: 1;
-    grid-column: span 2;
-    margin: 20px;
-    background-color:hsl(40, 100%, 35%);
+#cv-biography-photo {
+    float: left;
+    margin-left: 50px;
+    padding: 20px;
+    width: 25%;
 }
 
-#b2 {
-    grid-row: 2;
-    grid-column: 1;
-    margin: 20px;
+#cv-biography-text {
+    float: left;
+    text-align: center;
+    margin: 0px 20px 20px 20px;
+    width: 60%;
 }
 
-#b3 {
-    grid-row: 2;
-    grid-column: 2;
-    margin: 20px;
-}
-
-#b3 p {
+#cv-biography-text p {
     margin-left: 20px;
     margin-bottom: 20px;
     margin-right: 20px;
@@ -77,75 +68,98 @@ body {
     max-width: 1000px;
 }
 
-#c {
+#cv-merits-container {
     display: grid;
     grid-row: 3;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
     justify-content: start;
     margin: 20px;
     padding: 20px;
 }
 
-#c1 {
+#cv-merits-line {
     grid-row: 1;
     grid-column: span 2;
     margin: 20px;
     background-color:hsl(40, 100%, 35%);
 }
 
-#c2 {
-    text-align: center;
+#cv-merits {
     grid-row: 2;
-    margin: 20px;
+    display: inline-block;
 }
 
-#c3 {
+#cv-merits-movies {
+    float: left;
+    width: 50%
+}
+
+#cv-merits-movies h2 {
     text-align: center;
+    margin: 20px;
+}
+
+#cv-merits-movies ul {
+    margin: 20px;
+}
+
+#cv-merits-awards {
+    float: left;
+    width: 50%
+}
+
+#cv-merits-awards h2 {
+    text-align: center;
+    margin: 20px;
+}
+
+#cv-merits-awards ul {
+    grid-row: 3;
     grid-column: 2;
     margin: 20px;
 }
 
-#c4 {
-    grid-row: 3;
-    grid-column: 1;
-    margin: 20px;
-}
-
-#c5 {
-    grid-row: 3;
-    grid-column: 2;
-    margin: 20px;
-}
-
-#c6 {
+#cv-merits-line2 {
     grid-row: 4;
     grid-column: span 2;
     margin: 20px;
     background-color:hsl(40, 100%, 35%);
 }
 
-#c .winner {
+#cv-merits .winner {
     color: hsl(40, 100%, 35%);
 }
 
-#c .nominee {
+#cv-merits .nominee {
     color:hsl(0, 0%, 50%);
 }
 
-#d {
+#cv-adress {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto auto;
 }
 
-#d1 {
+#cv-adress-header {
     text-align: center;
     grid-row: 1;
 }
 
-#d2 {
+#cv-adress-list {
     text-align: center;
     grid-row: 2;
     margin: 10px;
+}
+
+@media screen and (max-width: 900px) {
+    #cv-biography-photo, #cv-biography-text, #cv-merits-awards, #cv-merits-movies {
+        width: 100%;
+    }
+    #cv-biography-photo {
+        margin-left: 35%;
+    }
+    #cv-biography-text {
+        margin: auto;
+    }
 }
