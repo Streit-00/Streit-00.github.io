@@ -15,11 +15,11 @@
 </head>
 <body>
     <template id="picture-template">
-        <form id="picture-template-form">
+        <div id="picture-template-div">
             <img src="" hidden>
-            <label id="tags" hidden></label>
-            <label id="photographer" hidden></label>
-        </form>
+            <p id="tags" hidden></p>
+            <p id="photographer" hidden></p>
+        </div>
     </template>
 
     <h1>Pixabay Picture Search</h1>
@@ -53,9 +53,9 @@
         <div class="pictures" id="picture9"></div>
     </div>
 
-    <div class="page-button-container">
-        <button class="page-button" type="submit" id="prev-button" hidden>Prev page</button>
-        <button class="page-button" type="submit" id="next-button" hidden>Next page</button>
-    </div>
+    <form class="page-button-container">
+        <button class="page-button" type="submit" onclick="button='prev'" id="prev-button" hidden>Prev page</button>
+        <button class="page-button" type="submit" onclick="button='next'" id="next-button" hidden>Next page</button>
+    </form>
 </body>
 </html>
