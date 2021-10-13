@@ -30,7 +30,9 @@ var color;
 var response;
 var searchResult;
 var page = 1;
+var lastPage;
 var maxHits;
+var perPage = 10;
 var button;
 
 form.onsubmit = async event => {
@@ -45,6 +47,7 @@ form.onsubmit = async event => {
     searchResult = await response.json();
 
     maxHits = searchResult.totalHits;
+    counter = maxHits;
 
     setImages(searchResult);
     
@@ -86,14 +89,26 @@ function getQuery(){
 
 function setImages(searchResult){
 
-    for (let i = 0; i < 10; i++) {
+    perPage = 10;
+
+    if (maxHits < 10){
+        perPage = maxHits;
+    }
+
+    for (let i = 0; i < 10; i++){
+        node = picture[i];
+        node.innerHTML = '';
+    }
+
+    for (let i = 0; i < perPage; i++) {
+
+        if (searchResult.hits[i] != null){
         imageUrl = searchResult.hits[i].webformatURL;
         tagsResult = searchResult.hits[i].tags;
         user = searchResult.hits[i].user;
 
         node = picture[i];
-        
-        node.innerHTML = '';
+
         node.appendChild(template.cloneNode(true).content);
         
         image = node.querySelector('img');
@@ -106,23 +121,34 @@ function setImages(searchResult){
         tags.textContent = tagsResult;
         photographer.hidden = false;
         photographer.textContent = user;
-    };
+
+        lastPage = false;
+        }
+        else {
+            lastPage = true;
+        }
+        
+    }
 }
 
 function updateButtons(){
 
+    if (page == 1) {
+        document.querySelector('#next-button').disabled = false;
+        document.querySelector('#prev-button').disabled = true;
+    }
     if (page > 1){
-        document.querySelector('#next-button').style.backgroundColor = 'rgb(239, 239, 239)';
-        document.querySelector('#prev-button').style.backgroundColor = 'rgb(239, 239, 239)';
+        document.querySelector('#next-button').disabled = false;
+        document.querySelector('#prev-button').disabled = false;
     }
-    else if (page == 1) {
-        document.querySelector('#next-button').style.backgroundColor = 'rgb(239, 239, 239)';
-        document.querySelector('#prev-button').style.backgroundColor = 'rgb(51, 51, 51)';
+    if (lastPage == true) {
+        document.querySelector('#next-button').disabled = true;
     }
-    else if (page == (maxHits/10)) {
-        document.querySelector('#next-button').style.backgroundColor = 'rgb(51, 51, 51)';
+    else if (lastPage == false){
+        document.querySelector('#next-button').disabled = false;
     }
-
-    
-
+    if (maxHits < 10){
+        document.querySelector('#next-button').disabled = true;
+        document.querySelector('#prev-button').disabled = true;
+    }
 }
