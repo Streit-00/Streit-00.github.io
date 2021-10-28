@@ -6,7 +6,7 @@ var formfilters         = document.querySelector('.filters');
 var newTodo             = document.querySelector('.new-todo');
 var deleteButton        = document.querySelectorAll('.destroy');
 var check               = document.querySelectorAll('.toggle');
-var flag                = false;
+var flag                = true;
 var button;
 var template;
 
